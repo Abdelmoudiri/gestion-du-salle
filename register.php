@@ -40,7 +40,7 @@ if (isset($_POST['signUp'])) {
 
 if (isset($_POST['signIn'])) {
     $email = trim($_POST['email']);
-    $password = trim($_POST['passwordIN'] );
+    $password = trim($_POST['passwordIN']);
 
     $stmt = $conn->prepare("SELECT * FROM membres WHERE email = ?");
     $stmt->bind_param("s", $email);
