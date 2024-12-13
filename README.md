@@ -93,7 +93,7 @@ Ajoutez ici des captures d'écran de l'interface utilisateur pour illustrer les 
 ![Page d'accueil](screenshoot/admin.png)
 
 ### Liste des membres
-![Liste des membres](screenshoot/client.png.png)
+![Liste des membres](screenshoot/client.png)
 
 ### Formulaire d'signUp
 ![Formulaire d'ajout](screenshoot/signup.png)
