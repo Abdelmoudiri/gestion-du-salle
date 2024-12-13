@@ -13,7 +13,7 @@ include("connect.php");
 <body>
     <div style="text-align:center; padding:15%;">
       <p  style="font-size:50px; font-weight:bold;">
-       Hello  <?php 
+       Hello <?php echo $_SESSION['user_id'] ?>  <?php 
        if(isset($_SESSION['email'])){
         $email=$_SESSION['email'];
         $query=mysqli_query($conn, "SELECT users.* FROM `membres` WHERE membres.email='$email'");

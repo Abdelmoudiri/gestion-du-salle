@@ -11,10 +11,9 @@ if (isset($_POST['signUp'])) {
 
    
     
-    // Hacher le mot de passe
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Vérifier si l'email existe déjà
+
     $stmt = $conn->prepare("SELECT * FROM membres WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -23,7 +22,7 @@ if (isset($_POST['signUp'])) {
     if ($result->num_rows > 0) {
         echo "<script>alert('Email Address Already Exists!');</script>";
     } else {
-        // Insérer un nouvel utilisateur dans la base de données
+
         $insertQuery = $conn->prepare("INSERT INTO membres (nom, prenom, email, telephone, password) VALUES (?, ?, ?, ?, ?)");
         $insertQuery->bind_param("sssss", $firstName, $lastName, $email, $telefone, $hashedPassword);
         if ($insertQuery->execute()) {
@@ -46,7 +45,7 @@ if (isset($_POST['signIn'])) {
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
-
+    
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         
@@ -57,9 +56,10 @@ if (isset($_POST['signIn'])) {
             $_SESSION['is_admin'] = $row['is_admin'] ?? 0;
 
             if ($_SESSION['is_admin'] == 1) {
-                header("Location: admin.php");
+                header("Location: homepage_admin.php");
             } else {
                 header("Location: homepage.php");
+    
             }
             exit();
         } else {
