@@ -29,7 +29,8 @@ CREATE TABLE `membres` (
   `Telephone` varchar(15) DEFAULT NULL,
   `is_admin` tinyint(1) DEFAULT 0,
   `password` varchar(255) NOT NULL
-);
+);   
+
 
 --
 -- Déchargement des données de la table `membres`
@@ -40,9 +41,21 @@ CREATE TABLE `reservations` (
   `ID_Reservation` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `ID_Membre` int(11) NOT NULL,
   `ID_Activite` int(11) NOT NULL,
-  `Date_Reservation` datetime NOT NULL,
-  `Statut` enum('Confirmee','Annulee') NOT NULL
+  `Date_Reservation` datetime DEFAULT CURRENT_TIMESTAMP,
+  `Statut` enum('Confirmee','Annulee') NOT NULL DEFAULT 'Confirmee'
 );
+ALTER TABLE `reservations`
+ADD CONSTRAINT `fk_reservation_membre`
+FOREIGN KEY (`ID_Membre`) REFERENCES `membres`(`ID_Membre`)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `reservations`
+ADD CONSTRAINT `fk_reservation_activite`
+FOREIGN KEY (`ID_Activite`) REFERENCES `activites`(`ID_Activite`)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+INSERT INTO `reservations` (`ID_Membre`,`ID_Activite`)
+VALUES (1,1);
 INSERT INTO `activites` (`Nom_Activite`, `Description`, `Capacite`, `date_debut`, `date_fin`, `Disponibilite`)
 VALUES
 ('Yoga Matinal', 'Une séance de yoga pour bien commencer la journée', 20, '2024-01-01', '2024-01-31', 1),

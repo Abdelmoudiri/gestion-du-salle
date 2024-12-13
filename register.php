@@ -63,10 +63,32 @@ if (isset($_POST['signIn'])) {
             }
             exit();
         } else {
-            echo "<script>alert('Incorrect Password!');</script>";
+            // echo "<script>alert('Incorrect Password!');</script>";
+            // header("Location: index.php");
+
+            echo "
+            <script>
+                
+                if(alert('Incorrect Password!')){
+                    console.log('alert PW');
+                }
+            </script>
+            ";
         }
     } else {
-        echo "<script>alert('Email Not Found!');</script>";
+        // echo "<script>alert('Email Not Found!');</script>";
+        // header("Location: index.php");
+
+        echo "
+            <script>
+                
+                window.location.href = 'index.php';
+                document.getElementById('message').innerHtml = 'Email Incorrect !';
+
+                
+            </script>
+            ";
+
     }
     $stmt->close();
 }
