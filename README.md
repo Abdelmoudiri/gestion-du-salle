@@ -87,6 +87,19 @@ Vous avez pour mission de :
 
 ## Ajout de Screenshots
 Ajoutez ici des captures d'écran de l'interface utilisateur pour illustrer les fonctionnalités principales.
+## Interface Utilisateur
+
+### Page d'accueil
+![Page d'accueil](screenshoot/admin.png)
+
+### Liste des membres
+![Liste des membres](screenshoot/client.png.png)
+
+### Formulaire d'signUp
+![Formulaire d'ajout](screenshoot/signup.png)
+
+### Formulaire d'logIN
+![Formulaire d'ajout](screenshoot/login.png)
 
 ---
 
